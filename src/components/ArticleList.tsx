@@ -6,26 +6,26 @@ import { Spinner } from 'react-bootstrap';
 const ArticleList: React.FC = () => {
     const [articles, setArticles] = useState<Article[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    
+    const fetchArticles = async () => {
+        try {
+        const response = await fetch('https://api.spaceflightnewsapi.net/v4/articles');
+        if(response.ok) {
+             const data = await response.json();
+             setArticles(data.results);
+             setLoading(false);
+         } 
+        else {
+            console.log(Error);
+        }
+        }
+        catch(error) {
+            throw new Error("Errore dati");
+        }
+      
+    };
 
     useEffect(() => {
-        const fetchArticles = async () => {
-            try {
-            const response = await fetch('https://api.spaceflightnewsapi.net/v4/articles');
-            if(response.ok) {
-                 const data = await response.json();
-                 setArticles(data);
-                 setLoading(false);
-             } 
-            else {
-                console.log(Error);
-            }
-            }
-            catch(error) {
-                throw new Error("Errore dati");
-            }
-          
-        };
-
         fetchArticles();
     }, []);
 

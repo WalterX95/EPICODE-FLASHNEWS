@@ -32,7 +32,7 @@ const ArticleDetail: React.FC = () => {
             <img src={article.image_url} alt={article.title} />
             <p>{article.summary}</p>
             <p>Pubblicato il : {new Date(article.published_at).toLocaleDateString()}</p>
-            <p>Fonte: {article.source}</p>
+            <p>Font: {article.source}</p>
             <a href={article.url} target="_blank" rel="noopener noreferrer">Leggi tutto l'articolo</a>
         </div>
     );

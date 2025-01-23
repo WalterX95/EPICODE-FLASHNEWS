@@ -8,3 +8,5 @@ export interface Article {
     source: string;
 }
 
+export default Article;
+
